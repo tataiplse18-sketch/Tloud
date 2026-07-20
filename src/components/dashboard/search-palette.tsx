@@ -41,7 +41,7 @@ export default function SearchPalette() {
     return () => document.removeEventListener("keydown", down);
   }, [searchOpen, setSearchOpen]);
 
-  const navigateTo = (page: "my-drive" | "recent" | "starred" | "shared" | "trash" | "settings") => {
+  const navigateTo = (page: "my-drive" | "recent" | "starred" | "shared" | "trash" | "settings" | "api" | "admin") => {
     setCurrentPage(page);
     setSearchOpen(false);
   };

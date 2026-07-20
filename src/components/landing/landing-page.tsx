@@ -83,7 +83,7 @@ const stats = [
 ];
 
 export default function LandingPage() {
-  const { setIsLoggedIn } = useAppStore();
+  const { setIsLoggedIn, setShowLogin } = useAppStore();
 
   return (
     <div className="landing-bg min-h-screen overflow-x-hidden">
@@ -122,7 +122,7 @@ export default function LandingPage() {
           </div>
           <div className="flex items-center gap-3">
             <Button
-              variant="ghost"
+              onClick={() => setShowLogin(true)}
               className="text-sm text-gray-300 hover:text-white hover:bg-white/5"
             >
               Sign in

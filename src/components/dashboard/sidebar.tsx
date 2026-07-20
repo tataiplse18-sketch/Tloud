@@ -16,6 +16,8 @@ import {
   CheckCircle,
   X,
   Settings,
+  Code2,
+  Shield,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { mockFolders } from "@/data/mock-data";
@@ -27,6 +29,12 @@ const navItems: { id: PageType; label: string; icon: React.ElementType }[] = [
   { id: "starred", label: "Starred", icon: Star },
   { id: "shared", label: "Shared with me", icon: Users },
   { id: "trash", label: "Trash", icon: Trash2 },
+];
+
+const bottomNavItems: { id: PageType; label: string; icon: React.ElementType }[] = [
+  { id: "api", label: "API", icon: Code2 },
+  { id: "admin", label: "Admin Panel", icon: Shield },
+  { id: "settings", label: "Settings", icon: Settings },
 ];
 
 const folderColors: Record<string, string> = {
@@ -192,6 +200,31 @@ export default function Sidebar() {
             Upgrade Now
           </button>
         </div>
+      </div>
+
+      {/* Bottom Nav */}
+      <div className="px-3 space-y-0.5 mt-auto border-t border-white/5 pt-3">
+        {bottomNavItems.map((item) => {
+          const isActive = currentPage === item.id;
+          return (
+            <button
+              key={item.id}
+              onClick={() => setCurrentPage(item.id)}
+              className={cn(
+                "w-full flex items-center gap-3 rounded-lg py-2 px-3 text-sm font-medium transition-all relative",
+                isActive
+                  ? "bg-[#4F7CFF]/10 text-[#4F7CFF]"
+                  : "text-gray-400 hover:bg-white/5 hover:text-gray-200"
+              )}
+            >
+              {isActive && (
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-[#4F7CFF] rounded-r-full" />
+              )}
+              <item.icon className="w-4 h-4" />
+              {item.label}
+            </button>
+          );
+        })}
       </div>
 
       {/* Upload Notification */}

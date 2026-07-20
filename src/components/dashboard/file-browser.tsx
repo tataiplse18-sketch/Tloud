@@ -5,6 +5,8 @@ import { useAppStore, type FileItem, type FilterTab } from "@/store/app-store";
 import { FileCard } from "@/components/dashboard/file-card";
 import { FolderCard } from "@/components/dashboard/folder-card";
 import { mockFiles, mockFolders, mockQuickAccess } from "@/data/mock-data";
+import ApiPage from "@/components/dashboard/api-page";
+import AdminPanel from "@/components/dashboard/admin-panel";
 import {
   LayoutGrid,
   List,
@@ -119,6 +121,14 @@ export default function FileBrowser() {
 
     if (currentPage === "profile") {
       return <ProfilePage />;
+    }
+
+    if (currentPage === "api") {
+      return <ApiPage />;
+    }
+
+    if (currentPage === "admin") {
+      return <AdminPanel />;
     }
 
     return (

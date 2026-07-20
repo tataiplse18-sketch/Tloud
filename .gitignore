@@ -64,6 +64,8 @@ landing-check.png
 dashboard-check.png
 right-panel-check.png
 search-check.png
+dashboard-after-login.png
+login-check.png
 
 # Upload analysis
 upload/*.json

@@ -19,10 +19,12 @@ const pageTitles: Record<PageType, string> = {
   trash: "Trash",
   settings: "Settings",
   profile: "Profile",
+  api: "Developer API",
+  admin: "Admin Panel",
 };
 
 export default function TopNav() {
-  const { currentPage, userName, setSearchOpen } = useAppStore();
+  const { currentPage, userName, setSearchOpen, setIsLoggedIn } = useAppStore();
   const { theme, setTheme } = useTheme();
 
   const firstName = userName.split(" ")[0] || "User";
@@ -81,7 +83,11 @@ export default function TopNav() {
         </button>
 
         {/* Profile */}
-        <div className="flex items-center gap-2.5 ml-1 pl-3 border-l border-white/10">
+        <button
+          onClick={() => setIsLoggedIn(false)}
+          className="flex items-center gap-2.5 ml-1 pl-3 border-l border-white/10 hover:opacity-80 transition-opacity"
+          title="Click to logout"
+        >
           <div className="w-8 h-8 rounded-full bg-[#4F7CFF] flex items-center justify-center text-xs font-bold text-white">
             {userName
               .split(" ")
@@ -89,14 +95,14 @@ export default function TopNav() {
               .join("")
               .slice(0, 2)}
           </div>
-          <div className="hidden md:block">
+          <div className="hidden md:block text-left">
             <p className="text-sm font-medium text-white leading-tight">
               {userName}
             </p>
             <p className="text-[11px] text-gray-500">Premium Plan</p>
           </div>
           <ChevronDown className="w-3.5 h-3.5 text-gray-500" />
-        </div>
+        </button>
       </div>
     </header>
   );

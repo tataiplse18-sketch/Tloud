@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 export type ViewMode = "grid" | "list";
-export type PageType = "my-drive" | "recent" | "starred" | "shared" | "trash" | "settings" | "profile";
+export type PageType = "my-drive" | "recent" | "starred" | "shared" | "trash" | "settings" | "profile" | "api" | "admin";
 export type FileType = "image" | "video" | "document" | "music" | "archive" | "folder" | "other";
 export type FilterTab = "all" | "images" | "videos" | "documents" | "music" | "archives" | "others";
 
@@ -75,6 +75,8 @@ interface AppState {
   // Auth
   isLoggedIn: boolean;
   setIsLoggedIn: (logged: boolean) => void;
+  showLogin: boolean;
+  setShowLogin: (show: boolean) => void;
   userName: string;
   setUserName: (name: string) => void;
 
@@ -117,6 +119,8 @@ export const useAppStore = create<AppState>((set) => ({
 
   isLoggedIn: false,
   setIsLoggedIn: (logged) => set({ isLoggedIn: logged }),
+  showLogin: false,
+  setShowLogin: (show) => set({ showLogin: show }),
   userName: "David Johnson",
   setUserName: (name) => set({ userName: name }),
 
